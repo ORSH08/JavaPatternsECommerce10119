@@ -1,0 +1,81 @@
+package orGalProject;
+
+public class Buyer extends Person {
+	private CartListNode first;
+	private CartListNode last;
+	private double balance;
+	private int ordersCount;
+	private Address address;
+
+	public Buyer(String buyerUserName) {
+		super(buyerUserName);
+		this.first = new CartListNode();
+		this.last = first;
+		this.ordersCount = 0;
+		this.balance = 0;
+		this.address = null;
+
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public void addCart() {
+
+		CartListNode node = this.last;
+		node.setNext(new CartListNode());
+		this.last = node.getNext();
+
+		this.ordersCount++;
+	}
+
+	public void setProductToCart(Product pr) {
+		this.last.getCart().addProduct(pr);
+		this.balance += pr.getPrice();
+
+	}
+
+	public Cart[] getAllCarts() {
+		Cart[] rv = new Cart[this.ordersCount];
+		int i = 0;
+		for (CartListNode node = this.first; node != this.last; node = node.getNext()) {
+			rv[i++] = node.getCart();
+		}
+		return rv;
+	}
+
+	public Cart getCurrentCart() {
+		return this.last.getCart();
+	}
+
+	public void setCurrentCart(Cart cart) {
+		this.last.setCart(cart);
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public int getOrdersCount() {
+		return ordersCount;
+	}
+
+	public void setOrdersCount(int ordersCount) {
+		this.ordersCount = ordersCount;
+	}
+
+	@Override
+	public String toString() {
+		return "userName:" + userName + "\naddress: " + address;
+	}
+
+}
