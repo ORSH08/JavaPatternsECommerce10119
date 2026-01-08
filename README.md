@@ -23,7 +23,7 @@ The core of the project focuses on architecture and memory management, featuring
     * Custom `Iterator` and `ListIterator`.
     * **Memento Pattern** integration to save and restore the list state.
 
-## 🛠 Design Patterns Implemented
+## Design Patterns Implemented
 
 This project showcases the implementation of several Gang of Four (GoF) design patterns:
 
